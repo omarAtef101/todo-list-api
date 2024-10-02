@@ -1,12 +1,12 @@
 import type { Request, Response } from 'express';
 
 import { isTaskBase, isTaskProp } from './helpers.js';
-import { fetchAllTasks, addNewTask, modifyTask, removeTask } from '../services/taskService.js';
+import { fetchAllTasks, fetchSingleTask, addNewTask, modifyTask, removeTask } from '../services/taskService.js';
 
 export const getTask = async (req: Request, res: Response) => {
   try {
     const taskId = Number(req.params.id);
-    const tasks = await fetchAllTasks(taskId);
+    const tasks = await fetchSingleTask(taskId);
     res.status(200).send(tasks);
   } catch (err) {
     console.error(err);

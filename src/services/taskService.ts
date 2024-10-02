@@ -1,8 +1,10 @@
-import { readTasks, writeTasks } from '../util/database.js';
+import { readTasks, readTask, writeTasks } from '../utils/database.js';
 
 import type { TaskProp, Task, TaskBase } from '../models/taskModel.js';
 
-export const fetchAllTasks = (id: number | undefined = undefined) => readTasks();
+export const fetchAllTasks = () => readTasks();
+
+export const fetchSingleTask = (id: number) => readTask(id);
 
 export const addNewTask = async (data: TaskBase) => {
   const tasks = await readTasks();
